@@ -9,12 +9,22 @@ async function DasboardPage() {
     return redirect('/auth/sign-in')
   }
 
+  
+
   // CHECKING FOR ROLE
   const User=await Prisma.user.findUnique({
     where:{
       email:user?.email
     }
   })
+
+  const Courses=await Prisma.course.findMany({
+    where:{
+      userId:User?.id
+    }
+  })
+
+
 
   if(!User){
     return redirect('/auth/sign-in')
@@ -24,6 +34,11 @@ async function DasboardPage() {
     return redirect('/role')
   }
 
+  if(User.role=="STUDENT" && Courses.length == 0){
+    return  redirect('/dashboard/search')
+  }
+
+  
   return (
     <div>DasboardPage</div>
   )
