@@ -51,7 +51,7 @@ export const Cards = () => {
                 <div className="w-[200px] text-xs h-[10px] rounded-none">
                   published on 12/12/2024
                 </div>
-                <Bookmark className="w-[30px] h-[30px] rounded-none" />
+                <Bookmark className="w-[30px] h-[30px] cursor-pointer text-zinc-400 rounded-none" />
               </div>
             </div>
           </CardContent>

@@ -1,6 +1,7 @@
 import { Prisma } from '@/lib/db';
 import { ServerSession } from '@/utils/ServerSession'
 import {redirect} from 'next/navigation'
+import { InstructorDasboard } from '../_components/Instructor/Dashboard';
 
 async function DasboardPage() {
   const {user}=await ServerSession();
@@ -40,7 +41,9 @@ async function DasboardPage() {
 
   
   return (
-    <div>DasboardPage</div>
+    <div>
+      <InstructorDasboard/>
+    </div>
   )
 }
 
