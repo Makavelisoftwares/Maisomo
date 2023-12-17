@@ -21,7 +21,7 @@ async function DasboardPage() {
 
   const Courses=await Prisma.course.findMany({
     where:{
-      userId:User?.id
+      instructorId:User?.id
     }
   })
 

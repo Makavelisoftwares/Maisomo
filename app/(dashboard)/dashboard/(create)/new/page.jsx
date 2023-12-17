@@ -1,9 +1,11 @@
-import React from 'react'
+import { CourseForm } from "../_components/CourseForm";
 
 function CreateCoursesPage() {
   return (
-    <div>CreateCoursesPage</div>
-  )
+    <div>
+      <CourseForm />
+    </div>
+  );
 }
 
-export default CreateCoursesPage
+export default CreateCoursesPage;

@@ -1,8 +1,8 @@
 import { Prisma } from "@/lib/db";
 import { ServerSession } from "@/utils/ServerSession";
 import {
+  BookOpen,
   BookPlus,
-  BookmarkPlus,
   LayoutDashboard,
   Loader2,
   Search,
@@ -45,7 +45,7 @@ export const SideBarLinks = async () => {
     {
       name: "My Courses",
       link: "/dashboard/courses",
-      icon: <BookmarkPlus />,
+      icon: <BookOpen />,
     },
     {
       name: "Create Course",
