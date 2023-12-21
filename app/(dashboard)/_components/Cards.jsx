@@ -28,6 +28,7 @@ export const Cards = () => {
               <div className="flex items-center space-x-2 mb-3">
                 <div className="w-[35px] h-[35px] rounded-full relative">
                   <Image
+                  alt="banner"
                     src="/banner.png"
                     className="object-fill rounded-full aspect-video"
                     fill
