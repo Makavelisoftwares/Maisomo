@@ -4,7 +4,7 @@ import { CategoryList } from "./CategoryList";
 
 export const Categories = () => {
   return (
-    <Card className="border-none sticky top-0 z-10 bg-white shadow-none ">
+    <Card className="border-none sticky top-0 z-10 bg-white dark:bg-[#121212] shadow-none ">
       <CardHeader>
         <CardTitle className="flex items-center space-x-3">
           <div>

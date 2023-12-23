@@ -16,8 +16,8 @@ export const ProfileCard = async () => {
   return (
     <div className="mt-4">
       <div className="grid grid-cols-2 gap-3">
-        <ProfileNames className='col-span-1' />
-        <ProfilePassword className='col-span-1'/>
+        <ProfileNames className='col-span-1 ' />
+        <ProfilePassword className='col-span-1 '/>
       </div>
     </div>
   );

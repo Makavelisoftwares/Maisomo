@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ToastProvider } from "@/providers/Toast";
 import { AuthSession } from "@/providers/AuthProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import Modal from "@/providers/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <ToastProvider />
+            <Modal/>
             {children}
           </ThemeProvider>
         </body>

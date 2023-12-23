@@ -5,7 +5,7 @@ export const Greetings = async () => {
   const { name } = await ServerSession();
 
   return (
-    <Card className='shadow-none border-none'>
+    <Card className='shadow-none border-none dark:bg-[#121212]'>
       <CardContent className='flex items-center py-3 text-2xl font-bold'>
         <span>🎉</span>
         Greatings , <span className="text-sky-500 uppercase">{name}</span>

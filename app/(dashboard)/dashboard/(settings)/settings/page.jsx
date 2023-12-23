@@ -19,7 +19,7 @@ function SettingsPage() {
           result to application error
         </span>
       </div>
-      <Card className="border-none shadow-none">
+      <Card className="border-none dark:bg-[#121212] shadow-none">
         <CardHeader>
           <CardTitle>Settings</CardTitle>
           <CardDescription>Control your profile setup</CardDescription>

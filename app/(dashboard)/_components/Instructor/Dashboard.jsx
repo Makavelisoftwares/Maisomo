@@ -6,7 +6,7 @@ export const InstructorDasboard = () => {
   return (
     <div>
       {/* Greetings */}
-      <div>
+      <div >
         <Greetings />
         <InstructorCard />
         <Enroled />

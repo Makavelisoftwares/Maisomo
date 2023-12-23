@@ -3,7 +3,7 @@ import { Cards } from "./Cards";
 
 export const Enroled = () => {
   return (
-    <Card className="mt-4 p-4 shadow-none border-none">
+    <Card className="mt-4 p-4 shadow-none dark:bg-inherit border-none">
       <CardHeader>
         <CardTitle>Enrolled Courses</CardTitle>
       </CardHeader>

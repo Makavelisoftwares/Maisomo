@@ -13,7 +13,7 @@ function CourseCreationLayout({ children }) {
     <div>
       <CourseCover />
 
-      <Card className="mt-3 border-none shadow-none">
+      <Card  className="mt-3 border-none dark:bg-[#121212] shadow-none">
         <CardHeader>
           <CardTitle>Course Creation</CardTitle>
           <CardDescription>
@@ -22,7 +22,7 @@ function CourseCreationLayout({ children }) {
           </CardDescription>
         </CardHeader>
 
-        <CardContent>{children}</CardContent>
+        <CardContent className='dark:bg-[#121212]'>{children}</CardContent>
       </Card>
     </div>
   );

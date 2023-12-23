@@ -29,6 +29,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   title: z
@@ -45,6 +46,7 @@ const FormSchema = z.object({
 export const CourseForm = () => {
   const [issubmitting, setissubmitting] = useState(false);
   const { data: categories } = useFetch("/api/category");
+  const router=useRouter()
 
   const form = useForm({
     resolver: zodResolver(FormSchema),
@@ -65,6 +67,8 @@ export const CourseForm = () => {
       console.log(response?.data);
 
       toast.message(`${response?.data?.title} successfully created`)
+      router.push(`/dashboard/new/${response?.data?.id}`)
+
     } catch (error) {
       console.log(error);
     } finally {

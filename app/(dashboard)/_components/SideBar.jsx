@@ -14,7 +14,7 @@ export const SideBar = async () => {
   });
 
   return (
-    <div className="w-[200px] border-r border-zinc-400/30 fixed h-screen">
+    <div className="w-[200px] border-r border-zinc-400/30 fixed h-screen dark:bg-[#3f3f3f] dark:text-slate-50">
       {/* logo */}
       <div className="py-3 flex items-center justify-center border-b border-zinc-400/30">
         <Logo />

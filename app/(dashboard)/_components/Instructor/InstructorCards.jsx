@@ -9,8 +9,8 @@ import { Overviewcard } from "./Overviewcards";
 
 export const InstructorCard = () => {
   return (
-    <div className="mt-4">
-      <Card className='border-none shadow-none'>
+    <div className="mt-4 ">
+      <Card className='border-none shadow-none dark:bg-inherit'>
         <CardHeader>
           <CardTitle>Dashboard Overview</CardTitle>
           <CardDescription>

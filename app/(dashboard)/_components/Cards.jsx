@@ -11,7 +11,7 @@ export const Cards = () => {
   return (
     <div className="grid grid-cols-3 gap-3">
       {cards.map((card, i) => (
-        <Card className="col-span-1 rounded-none" key={i}>
+        <Card className="col-span-1 dark:bg-[#3f3f3f] rounded-none" key={i}>
           <CardContent className="p-1 overflow-hidden">
             <div className="mb-2">
               <div className="w-full relative h-[30vh]">
