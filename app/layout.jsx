@@ -5,6 +5,7 @@ import { ToastProvider } from "@/providers/Toast";
 import { AuthSession } from "@/providers/AuthProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import Modal from "@/providers/Modal";
+import { ConfettiProvider } from "@/providers/confetti-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,8 +34,9 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
+            <ConfettiProvider />
             <ToastProvider />
-            <Modal/>
+            <Modal />
             {children}
           </ThemeProvider>
         </body>

@@ -32,3 +32,54 @@ export const POST = async (req) => {
     console.log("FAILED TO CREATE COURSE");
   }
 };
+
+export const PUT = async (req) => {
+  try {
+    const { courseId } = await req.json();
+
+    const checkCoursePublished = await Prisma.course.findUnique({
+      where: {
+        id: courseId,
+      },
+    });
+
+    if (!checkCoursePublished.published) {
+      await Prisma.course.update({
+        data: {
+          published: true,
+        },
+        where: {
+          id: courseId,
+        },
+      });
+
+      return NextResponse.json(
+        {
+          message: "course has been published",
+          publishment: checkCoursePublished.published,
+        },
+        { status: 200 }
+      );
+    }
+
+
+    await Prisma.course.update({
+      data: {
+        published: false,
+      },
+      where: {
+        id: courseId,
+      },
+    });
+
+    return NextResponse.json(
+      {
+        message: "course has been unpublished",
+        publishment: checkCoursePublished.published,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.log("FAILED TO UPDATE PUBLISHED", error.message);
+  }
+};

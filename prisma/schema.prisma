@@ -75,6 +75,8 @@ model Course {
   description String? @db.Text
   image       String? @db.Text
 
+  published Boolean @default(false)
+
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
 

@@ -19,7 +19,7 @@ export const UnitsSideBar = ({ chapters }) => {
         >
           <div>{chap?.title}</div>
           <div>
-            <Button variant="ghost" asChild>
+            <Button variant="ghost" className='bg-inherit hover:bg-inherit hover:text-inherit' asChild>
               <Link href={`${pathname}/chapter/${chap?.id}`}>
                 <ArrowRight />
               </Link>
