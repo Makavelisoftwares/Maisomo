@@ -1,6 +1,6 @@
 "use client";
 
-import { MoreHorizontal,ArrowUpDown } from "lucide-react";
+import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,43 +11,108 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import moment from "moment";
+import { Badge } from "@/components/ui/badge";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import { Prisma } from "@/lib/db";
+import axios from "axios";
+import { toast } from "sonner";
 
 export const columns = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "title",
+    header: "Title",
   },
   {
-    accessorKey: "email",
+    accessorKey: "category",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Category
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
-  },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
+      const category = row.getValue("category").name;
 
-      return <div className="text-right font-medium">{formatted}</div>;
+      return (
+        <>
+          <div>{category}</div>
+        </>
+      );
     },
   },
   {
+    accessorKey: "published",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const published = row.getValue("published");
+
+      return (
+        <>
+          {published ? (
+            <Badge className="bg-sky-700 text-white hover:bg-sky-700">
+              published
+            </Badge>
+          ) : (
+            <Badge className="bg-rose-700 text-white hover:bg-rose-700">
+              draft
+            </Badge>
+          )}
+        </>
+      );
+    },
+  },
+  {
+    accessorKey: "Updated On",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status Updated
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const date = moment(row.getValue("updatedAt")).format("YYYY-MM-DD");
+
+      return <div className=" font-medium">{date}</div>;
+    },
+  },
+
+  {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const course = row.original;
+
+      const handleDelete = async () => {
+        try {
+          const response = await axios.put(`/api/course/${course?.id}`,{id:course?.id});
+          toast.message(response.data);
+
+          window.location.assign('/dashboard/courses');
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
       return (
         <DropdownMenu>
@@ -59,13 +124,13 @@ export const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
+            <DropdownMenuItem asChild>
+              <Link href={`/dashboard/new/${course?.id}`}>Make Changes</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleDelete}>
+              Delete Course
+            </DropdownMenuItem>
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
