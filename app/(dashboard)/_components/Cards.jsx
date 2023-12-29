@@ -6,8 +6,20 @@ import { cn } from "@/lib/utils";
 import { Bookmark } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
+import { BookMarkIcon } from "./BookmarkIcon";
+import { ServerSession } from "@/utils/ServerSession";
+import { Prisma } from "@/lib/db";
 
-export const Cards = ({ data }) => {
+export const Cards =async ({ data }) => {
+
+  const {email}=await ServerSession();
+  const User=await Prisma.user.findUnique({
+    where:{
+      email:email
+    }
+  })
+
+
   const GREEN = ["a", "z", "p", "q", "m", "r", "t", "y"];
   const PURPLE = ["l", "b", "s", "v", "c", "d", "g", "h", "w"];
   const BLUE = ["k", "o", "e", "f", "i", "j", "n", "u", "x"];
@@ -78,7 +90,7 @@ export const Cards = ({ data }) => {
                 <div className="w-[200px] text-xs h-[10px] rounded-none">
                   published on {moment(card?.updatedAt).format("YYYY-MM-DD")}
                 </div>
-                <Bookmark className="w-[30px] h-[30px] cursor-pointer text-zinc-400 rounded-none" />
+                <BookMarkIcon userId={User?.id} courseId={card?.id} />
               </div>
             </div>
           </CardContent>
