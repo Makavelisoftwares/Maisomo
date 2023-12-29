@@ -29,6 +29,14 @@ const formSchema = z.object({
   }),
 });
 
+/**
+ * ProfilePasswordForm component.
+ *
+ * Allows user to update their password.
+ * Handles form submission and makes API call to update password.
+ * Shows loading state and error messages.
+ * Uses React Hook Form for form management.
+ */
 export const ProfilePasswordForm = () => {
   const [isSubmitting, setisSubmitting] = useState(false);
 
@@ -68,14 +76,11 @@ export const ProfilePasswordForm = () => {
               <FormItem>
                 <FormLabel>Current Password</FormLabel>
                 <FormControl>
-                  <Input
-                    type="password"
-                    disabled={isSubmitting}
-                    {...field}
-                  />
+                  <Input type="password" disabled={isSubmitting} {...field} />
                 </FormControl>
                 <FormDescription>
-                  Fill in your current password you used to register your account.
+                  Fill in your current password you used to register your
+                  account.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -89,15 +94,9 @@ export const ProfilePasswordForm = () => {
               <FormItem>
                 <FormLabel>New Password</FormLabel>
                 <FormControl>
-                  <Input
-                    disabled={isSubmitting}
-                    type="password"
-                    {...field}
-                  />
+                  <Input disabled={isSubmitting} type="password" {...field} />
                 </FormControl>
-                <FormDescription>
-                  Fill in your new password.
-                </FormDescription>
+                <FormDescription>Fill in your new password.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}

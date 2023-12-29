@@ -8,6 +8,11 @@ import {
 import { cn } from "@/lib/utils";
 import { ProfilePasswordForm } from "./Profile-passwprd-form";
 
+/**
+ * ProfilePassword component renders a card with title,
+ * description and a form to update user password.
+ */
+
 export const ProfilePassword = () => {
   return (
     <Card className={cn()}>
@@ -17,8 +22,8 @@ export const ProfilePassword = () => {
           Enter your current password to make update
         </CardDescription>
 
-        <CardContent className='mt-3'>
-          <ProfilePasswordForm/>
+        <CardContent className="mt-3">
+          <ProfilePasswordForm />
         </CardContent>
       </CardHeader>
     </Card>
