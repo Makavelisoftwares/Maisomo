@@ -6,7 +6,7 @@ export const BrowseSkeleton = () => {
 
   return (
     <div>
-      <Skeleton className="h-[40vh] w-full mb-3" />
+      <Skeleton className="h-[40vh] w-full mb-4" />
       <div className="flex space-x-2 mb-2">
         <Skeleton className="h-[40px] w-[40px]" />
         <Skeleton className="h-[40px] w-[100px]" />
