@@ -1,8 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import axios from "axios";
-import { BookmarkIcon } from "lucide-react";
+import { BookmarkIcon, CheckCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -20,7 +19,7 @@ export const BookMarkIcon = ({ userId, courseId }) => {
         );
 
         for (let enrols of enrollments) {
-          if (enrols.courseId == courseId) {
+          if (enrols.courseId == courseId && enrols.studentId == userId) {
             setIsBookmarked(true);
           } else {
             setIsBookmarked(false);
@@ -32,7 +31,7 @@ export const BookMarkIcon = ({ userId, courseId }) => {
     };
 
     fetchData();
-  }, [ courseId]);
+  }, [courseId,userId]);
 
   const handleBookMark = async () => {
     try {
@@ -56,13 +55,21 @@ export const BookMarkIcon = ({ userId, courseId }) => {
 
   return (
     <div>
-      <BookmarkIcon
-        onClick={handleBookMark}
-        className={cn(
-          "w-[30px] h-[30px] cursor-pointer  rounded-none",
-          isBookmarked ? "text-blue-500" : "text-zinc-400"
-        )}
-      />
+      {isBookmarked ? (
+        <CheckCircle
+          onClick={handleBookMark}
+          className=
+            "w-[30px] h-[30px] cursor-pointer text-sky-500 rounded-none"
+          
+        />
+      ) : (
+        <BookmarkIcon
+          onClick={handleBookMark}
+          className=
+            "w-[30px] h-[30px] cursor-pointer  rounded-none text-zinc-400"
+          
+        />
+      )}
     </div>
   );
 };

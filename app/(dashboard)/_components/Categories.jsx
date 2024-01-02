@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Filter } from "lucide-react";
 import { CategoryList } from "./CategoryList";
 
-export const Categories = ({data}) => {
+export const Categories = ({data,courses}) => {
   return (
     <Card className="border-none sticky top-0 z-10 bg-white dark:bg-[#121212] shadow-none ">
       <CardHeader>

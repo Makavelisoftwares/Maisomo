@@ -36,7 +36,7 @@ async function BrowsePage() {
   return (
     <div>
       <Banner />
-      <Categories data={Category} />
+      <Categories courses={Courses} data={Category} />
       <Cards data={Courses} />
     </div>
   );
