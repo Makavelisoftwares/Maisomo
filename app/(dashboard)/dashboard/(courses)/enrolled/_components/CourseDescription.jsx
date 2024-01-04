@@ -38,7 +38,7 @@ export const CourseDescription = async ({ courseId }) => {
 
             {Course?.chapters?.map((chapter) => (
               <div key={chapter?.id}>
-                <div className="flex items-center justify-between p-2 py-3 border mb-3 bg-sky-300/50 border-zinc-300/30">
+                <div className="flex items-center justify-between p-3 py-3 border mb-3 bg-sky-300/50 border-zinc-300/30">
                   <div>{chapter?.title}</div>
                   <div>
                     <Link
