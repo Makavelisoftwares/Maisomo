@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Prisma } from "@/lib/db";
 import React from "react";
+import { AiSheet } from "./_components/AiSheet";
 
 async function StudentChapterPage({ params }) {
   const chapterId = params?.name;
@@ -18,15 +19,18 @@ async function StudentChapterPage({ params }) {
     },
   });
 
-
   return (
     <div>
-      <Card>
+      <Card className="border-none shadow-none">
         <CardHeader>
-          <CardTitle>
-            Chapter:
-            {chapter?.title}
-          </CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle>
+              Chapter:
+              {chapter?.title}
+            </CardTitle>
+            <AiSheet  params={params}/>
+          </div>
+
           <CardDescription>
             {chapter?.video && <VideoPlayer value={chapter?.video} />}
             <Preview value={chapter?.content} />
