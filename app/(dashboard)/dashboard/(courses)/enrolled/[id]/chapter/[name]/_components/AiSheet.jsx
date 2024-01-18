@@ -1,6 +1,6 @@
-
 "use client";
 
+import { MarkdownLite } from "@/components/MarkDown";
 import { Preview } from "@/components/Preview";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,10 +66,12 @@ export const AiSheet = ({ params }) => {
   };
 
   const handleCopy = () => {
+    navigator.clipboard.writeText(content);
+    setcopied(true);
+
     setTimeout(() => {
-      navigator.clipboard.writeText(content);
-      setcopied(true);
-    }, 200);
+      setcopied(false);
+    }, 1000);
   };
 
   return (
@@ -104,19 +106,22 @@ export const AiSheet = ({ params }) => {
           ) : (
             <div>
               {showClipboard && (
-                <div className="flex items-center justify-end mr-6">
+                <div
+                  onClick={handleCopy}
+                  className="flex items-center justify-end mr-6"
+                >
                   {copied ? (
                     <CheckCheck className="text-emerald-400" />
                   ) : (
-                    <Copy
-                      onClick={handleCopy}
-                      className="text-zinc-500 cursor-pointer"
-                    />
+                    <Copy className="text-zinc-500 cursor-pointer" />
                   )}
                 </div>
               )}
 
-              <Preview value={content} />
+              <div>
+                <Preview value={content} />
+              </div>
+              {/* <MarkdownLite text={content} /> */}
             </div>
           )}
         </ScrollArea>
