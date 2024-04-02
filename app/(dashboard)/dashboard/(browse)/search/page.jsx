@@ -23,6 +23,7 @@ async function BrowsePage() {
     include: {
       category: true,
       instructor: true,
+      chapters: true,
     },
     orderBy: {
       updatedAt: "desc",
@@ -31,11 +32,8 @@ async function BrowsePage() {
 
   const Category = await Prisma.category.findMany();
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   return (
     <div>
-      <Banner />
       <Categories courses={Courses} data={Category} />
       <Cards data={Courses} />
     </div>

@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { Bookmark } from "lucide-react";
+import { BookOpen, Bookmark } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
 // import { BookMarkIcon } from "./BookmarkIcon";
@@ -70,8 +70,12 @@ export const EnrolledCards = async ({ data }) => {
             </div>
             <div className="flex flex-col">
               <div className=" font-bold text-lg ">{card?.title}</div>
+              <div className="flex items-center text-xs space-x-2">
+                <BookOpen className="text-sky-500" />
+                <div>{card?.chapters?.length} chapters</div>
+              </div>
               <div className="text-xs text-zinc-400">
-                Prof. {card?.instructor?.name}
+                instructor - {card?.instructor?.name}
               </div>
             </div>
           </div>
@@ -82,7 +86,9 @@ export const EnrolledCards = async ({ data }) => {
             <Preview value={`${card?.description.slice(0, 120)}...`} />
 
             <div className="text-sm text-sky-400">
-              <Link href={`/dashboard/enrolled/${card?.id}`}>Learn More ...</Link>
+              <Link href={`/dashboard/enrolled/${card?.id}`}>
+                Learn More ...
+              </Link>
             </div>
           </div>
 

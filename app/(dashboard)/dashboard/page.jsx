@@ -36,13 +36,13 @@ async function DasboardPage() {
     },
     include: {
       course: {
-        include:{
-          instructor:true
-        }
-      }
+        include: {
+          instructor: true,
+          chapters: true,
+        },
+      },
     },
   });
-
 
   if (!User) {
     return redirect("/auth/sign-in");
@@ -71,14 +71,14 @@ async function DasboardPage() {
             </CardDescription>
           </CardHeader>
         </Card>
-        <StudentDashboard enrols={enrollments}/>
+        <StudentDashboard enrols={enrollments} />
       </div>
     );
   }
 
   return (
     <div>
-      <InstructorDasboard enrols={enrollments}/>
+      <InstructorDasboard enrols={enrollments} />
     </div>
   );
 }

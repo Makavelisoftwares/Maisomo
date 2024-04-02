@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { Bookmark } from "lucide-react";
+import { BookOpen, Bookmark } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
 import { BookMarkIcon } from "./BookmarkIcon";
@@ -72,8 +72,12 @@ export const Cards =async ({ data }) => {
                 </div>
                 <div className="flex flex-col">
                   <div className=" font-bold text-lg ">{card?.title}</div>
+                  <div className="flex items-center space-x-2 text-xs">
+                    <BookOpen className="text-sky-500"/>
+                    <div>{card?.chapters?.length} chapters</div>
+                  </div>
                   <div className="text-xs text-zinc-400">
-                    Prof. {card?.instructor?.name}
+                    instructor - {card?.instructor?.name}
                   </div>
                 </div>
               </div>
